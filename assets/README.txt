@@ -11,4 +11,8 @@ You need assets !!!
 
 Pro Tips:
 1. Click View and check "Unchanged Files"
-2. Right click the on the column labels in the file view and click "Lock" to show locked files
+2. Right click the on the column labels in the file view and change the setup to:
+    2b. Lock, Name, Revision, Local State, Remote State, Last Author, Last Changed
+    3b. You can also drag the columns to re-order them
+
+Have fun!! Hit update, lock the files you need, and unlock / commit them when you're done!
