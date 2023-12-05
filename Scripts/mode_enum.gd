@@ -1,0 +1,3 @@
+extends Node
+
+enum GLOBAL_MODES {CLAW, DESTROY, BUILD, NAIL, SAW,} 

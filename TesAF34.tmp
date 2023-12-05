@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://cofp2mvh0ygjy"]
+[gd_scene load_steps=16 format=3 uid="uid://cofp2mvh0ygjy"]
 
 [ext_resource type="Script" path="res://Scripts/Character Control/Player.gd" id="1_1kmae"]
 [ext_resource type="Texture2D" uid="uid://dm08h36dxwy8g" path="res://assets/aaa.png" id="1_i3jii"]
@@ -7,13 +7,8 @@
 [ext_resource type="Script" path="res://Scripts/Character Control/Mouse Collisions.gd" id="4_21l83"]
 [ext_resource type="Script" path="res://Scripts/Character Control/Modes/ClawMode.gd" id="4_hiuos"]
 [ext_resource type="Texture2D" uid="uid://brbmk8ynnhi7j" path="res://assets/TEMP - Claw Art.png" id="4_i84r5"]
-[ext_resource type="Script" path="res://Scripts/Character Control/Modes/DestroyMode.gd" id="7_56pms"]
-[ext_resource type="Texture2D" uid="uid://ckus1v6olefbt" path="res://assets/TEMP - Boom_Slime_SP.webp" id="8_snulg"]
-[ext_resource type="Script" path="res://Scripts/Modules/Destroy_Mod.gd" id="9_ok6ua"]
+[ext_resource type="Script" path="res://Scripts/Modules/Pickup_Mod.gd" id="8_fxwba"]
 [ext_resource type="Script" path="res://Scripts/Modules/Grapple_Mod.gd" id="9_yyobw"]
-[ext_resource type="Script" path="res://Scripts/Pickups/Pickup_Claw.gd" id="10_bpart"]
-[ext_resource type="Script" path="res://Scripts/Pickups/Pickup_Destroy.gd" id="12_awjm0"]
-[ext_resource type="Texture2D" uid="uid://hlxlinaehvw" path="res://assets/TEMP - destroy power art.png" id="13_k272c"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0tx6s"]
 radius = 25.0
@@ -33,20 +28,23 @@ bounce = 0.08
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_87un2"]
 size = Vector2(47, 20)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_cohgj"]
-size = Vector2(34, 33)
-
 [node name="Test" type="Node2D"]
 
 [node name="Player" type="CharacterBody2D" parent="." node_paths=PackedStringArray("player_sprite")]
 floor_max_angle = 0.523599
 floor_snap_length = 30.0
 script = ExtResource("1_1kmae")
+move_speed = null
+friction = null
+acceleration = null
+jump_height = null
+jump_time = null
+jump_fall_mod = null
 player_sprite = NodePath("Sprite")
 
 [node name="Camera2D" type="Camera2D" parent="Player" node_paths=PackedStringArray("look_target")]
+visible = false
 top_level = true
-position = Vector2(242, -68)
 script = ExtResource("3_7e767")
 look_target = NodePath("..")
 
@@ -58,21 +56,19 @@ position = Vector2(8, 0)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("1_i3jii")
 
-[node name="Mode Container" type="RayCast2D" parent="Player" node_paths=PackedStringArray("claw_mode", "destroy_mode", "build_mode", "nail_mode", "saw_mode")]
+[node name="Mode Container" type="RayCast2D" parent="Player"]
 target_position = Vector2(0, 1000)
 script = ExtResource("4_21l83")
-claw_mode = NodePath("Claw Mode")
-destroy_mode = NodePath("Destroy Mode")
-build_mode = NodePath("Build Mode")
-nail_mode = NodePath("Nail Mode")
-saw_mode = NodePath("Saw Mode")
 
 [node name="Claw Mode" type="Area2D" parent="Player/Mode Container" node_paths=PackedStringArray("player_controller", "item_hold_position")]
 top_level = true
+position = Vector2(49, 0)
+rotation = -1.57079
 input_pickable = false
 script = ExtResource("4_hiuos")
 player_controller = NodePath("../..")
 item_hold_position = NodePath("Item Position")
+firing_speed = 4.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Mode Container/Claw Mode"]
 position = Vector2(-0.500001, -2.125)
@@ -82,24 +78,9 @@ shape = SubResource("RectangleShape2D_erxl4")
 position = Vector2(-60, 216)
 
 [node name="Claw Art" type="Sprite2D" parent="Player/Mode Container/Claw Mode"]
-position = Vector2(0, 28)
+position = Vector2(0, 1)
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("4_i84r5")
-
-[node name="Destroy Mode" type="Node2D" parent="Player/Mode Container"]
-top_level = true
-script = ExtResource("7_56pms")
-
-[node name="Destroy Art" type="Sprite2D" parent="Player/Mode Container/Destroy Mode"]
-position = Vector2(-1.96701e-06, 45)
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("8_snulg")
-
-[node name="Build Mode" type="Node2D" parent="Player/Mode Container"]
-
-[node name="Nail Mode" type="Node2D" parent="Player/Mode Container"]
-
-[node name="Saw Mode" type="Node2D" parent="Player/Mode Container"]
 
 [node name="Environment" type="Node" parent="."]
 
@@ -161,7 +142,7 @@ texture = ExtResource("3_uokmn")
 position = Vector2(-653, -48)
 mass = 0.03
 physics_material_override = SubResource("PhysicsMaterial_yay2u")
-script = ExtResource("9_ok6ua")
+script = ExtResource("8_fxwba")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/Box"]
 scale = Vector2(2.8, 2.8)
@@ -184,30 +165,4 @@ shape = SubResource("RectangleShape2D_87un2")
 scale = Vector2(0.3, 0.15)
 texture = ExtResource("3_uokmn")
 
-[node name="Pickup - Claw" type="Area2D" parent="."]
-position = Vector2(189, 0)
-script = ExtResource("10_bpart")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Pickup - Claw"]
-position = Vector2(0, 1.5)
-shape = SubResource("RectangleShape2D_cohgj")
-
-[node name="Temp-ClawArt" type="Sprite2D" parent="Pickup - Claw"]
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("4_i84r5")
-
-[node name="Pickup - Destroy" type="Area2D" parent="."]
-position = Vector2(294, 0)
-script = ExtResource("12_awjm0")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Pickup - Destroy"]
-position = Vector2(0, 1.5)
-shape = SubResource("RectangleShape2D_cohgj")
-
-[node name="Sprite" type="Sprite2D" parent="Pickup - Destroy"]
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("13_k272c")
-
 [connection signal="body_entered" from="Player/Mode Container/Claw Mode" to="Player/Mode Container/Claw Mode" method="_on_body_entered"]
-[connection signal="body_shape_entered" from="Pickup - Claw" to="Pickup - Claw" method="_on_body_shape_entered"]
-[connection signal="body_shape_entered" from="Pickup - Destroy" to="Pickup - Destroy" method="_on_body_shape_entered"]

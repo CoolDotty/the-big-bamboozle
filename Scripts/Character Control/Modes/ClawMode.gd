@@ -1,6 +1,6 @@
 extends Area2D
 
-var state_active = true
+var mode_active = false
 
 @export var player_controller : Node
 
@@ -18,18 +18,25 @@ var grapple_hold_position
 
 @export var min_firing_distance := 100.0
 
-@export var firing_speed := 1.5
-
 var t = 0.0
+@export var firing_speed := 750
+
 var starting_claw_position = Vector2()
 var target_claw_position = Vector2()
 
 var grapple_target = Vector2()
 var starting_grapple_position = Vector2()
 
+func disable_mode():
+	mode_active = false
+	self.visible = false
+
+func enable_mode():
+	mode_active = true
+	self.visible = true
 
 func _process(delta):
-	if not state_active:
+	if not mode_active:
 		return 
 
 	if holding_item:
@@ -37,10 +44,24 @@ func _process(delta):
 		print(self.global_rotation_degrees)
 
 	if current_state == Claw_State.FIRING:
-		t += delta * 0.4 * firing_speed
-		self.global_position = starting_claw_position.lerp(target_claw_position, t)
+		# Calculate the time factor based on constant speed
+		var distance = starting_claw_position.distance_to(target_claw_position)
+		t += delta * firing_speed / distance
+		
+		# Ensure that t stays within the [0, 1] range
+		t = clamp(t, 0.0, 1.0)
+
+		# Perform the lerping
+		self.position = starting_claw_position.lerp(target_claw_position, t)
 	elif current_state == Claw_State.TETHERING:
-		t += delta * 0.4
+		# Calculate the time factor based on constant speed
+		var distance = starting_grapple_position.distance_to(grapple_target)
+		t += delta * firing_speed / distance
+		
+		# Ensure that t stays within the [0, 1] range
+		t = clamp(t, 0.0, 1.0)
+
+		# Perform the lerping
 		player_controller.global_position = starting_grapple_position.lerp(grapple_target, t)
 		if player_controller.global_position.distance_to(grapple_target) <= 75:
 			hit_grapple_point()
@@ -54,7 +75,7 @@ func _process(delta):
 	if Input.is_action_just_pressed("input_fire"):
 		match current_state:
 			Claw_State.DEFAULT:
-				shoot_claw()
+				shoot_claw(delta)
 			Claw_State.FIRING, Claw_State.TETHERING:
 				cancel_claw()
 			Claw_State.GRAPPLED:
@@ -62,7 +83,7 @@ func _process(delta):
 			Claw_State.HOLDING:
 				throw_held_item()
 
-func shoot_claw():
+func shoot_claw(delta):
 	if position.distance_to(get_parent().hit_point) >= min_firing_distance:
 		t = 0
 		current_state = Claw_State.FIRING
