@@ -1,0 +1,61 @@
+[gd_scene load_steps=8 format=3 uid="uid://c1nrlqpol4geo"]
+
+[ext_resource type="Texture2D" uid="uid://fqa18fnxb1yg" path="res://assets/concrete (1).png" id="1_vb6gl"]
+[ext_resource type="Texture2D" uid="uid://b8i23enbvahs0" path="res://assets/Tileset.png" id="2_7qd53"]
+[ext_resource type="Texture2D" uid="uid://dm08h36dxwy8g" path="res://assets/aaa.png" id="3_27c1b"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3y5o2"]
+texture = ExtResource("1_vb6gl")
+texture_region_size = Vector2i(24, 24)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gq0ak"]
+texture = ExtResource("2_7qd53")
+texture_region_size = Vector2i(50, 50)
+0:0/0 = 0
+0:1/0 = 0
+0:2/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:1/0 = 0
+3:0/0 = 0
+3:2/0 = 0
+3:3/0 = 0
+2:3/0 = 0
+1:3/0 = 0
+0:3/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_q0c8g"]
+tile_size = Vector2i(50, 50)
+sources/0 = SubResource("TileSetAtlasSource_3y5o2")
+sources/1 = SubResource("TileSetAtlasSource_gq0ak")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mpmhc"]
+size = Vector2(24, 24)
+
+[node name="Environment" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_q0c8g")
+cell_quadrant_size = 50
+format = 2
+layer_0/tile_data = PackedInt32Array(65532, 1, 0, 65533, 1, 0, 65534, 1, 0, 65535, 1, 0, 0, 1, 0, 1, 1, 0, 2, 1, 0, 3, 1, 0, 65523, 1, 0, 65524, 1, 0, 65525, 1, 0, 65526, 1, 0, 65527, 1, 0, 65528, 1, 0, 65529, 1, 0, 65530, 1, 0, 65531, 1, 0, 4, 1, 0, 5, 1, 0, 6, 1, 0, 7, 1, 0, 8, 1, 0, 9, 1, 0, 65522, 1, 0, 65521, 1, 0, 65520, 1, 0, 65519, 1, 0, 65518, 1, 0, 10, 1, 0, 11, 1, 0, 12, 1, 0, 13, 1, 0, 14, 1, 0, 15, 1, 0, 16, 1, 0, 17, 1, 0, 18, 1, 0, 19, 1, 0, 65517, 1, 0, 65516, 1, 0, 65515, 1, 0, 65514, 1, 0, 65513, 1, 0, 65512, 1, 0, 65511, 1, 0, 65510, 1, 0, 65509, 1, 0, 65508, 1, 0, 65507, 1, 0, 20, 1, 0, 21, 1, 0, 22, 1, 0, 23, 1, 0, 24, 1, 0, 25, 1, 0, 26, 1, 0, 27, 1, 0, 65506, 1, 0, -30, 1, 0, -65566, 1, 0, -131102, 1, 0, -196638, 1, 0, -262174, 1, 0, -327710, 1, 0, -393246, 1, 0, -458782, 1, 0, -524318, 1, 0, -589854, 1, 0, -655390, 1, 0, -720926, 1, 0, -786462, 1, 0, -851998, 1, 0, -917534, 1, 0, -983070, 1, 0, -1048606, 1, 0, -1114142, 1, 0, -65509, 1, 0, -131045, 1, 0, -196581, 1, 0, -262117, 1, 0, -327653, 1, 0, -393189, 1, 0, -458725, 1, 0, -524261, 1, 0, -589797, 1, 0, -655333, 1, 0, -720869, 1, 0, -786405, 1, 0, -851941, 1, 0, -917477, 1, 0, -983013, 1, 0, -1048549, 1, 0, -1114085, 1, 0, -1179621, 1, 0, -1245157, 1, 0, -1179678, 1, 0, -262156, 196609, 2, -262155, 196609, 0, -262154, 196609, 0, -262153, 196609, 0, -262152, 196609, 0, -262151, 196609, 2, -262146, 196609, 2, -262145, 196609, 0, -327680, 196609, 0, -327679, 196609, 0, -327678, 196609, 0, -327677, 196609, 2, -196620, 131073, 0, -131084, 131073, 0, -65548, 131073, 0, -12, 131073, 0, -196615, 131073, 0, -131079, 131073, 0, -65543, 131073, 0, -7, 131073, 0, -196610, 131073, 0, -131074, 131073, 0, -65538, 131073, 0, -2, 131073, 0, -262141, 131073, 0, -196605, 131073, 0, -131069, 131073, 0, -65533, 131073, 0, -393214, 1, 2, -327692, 1, 2, -327691, 1, 2, -327690, 1, 2, -327689, 1, 2, -327688, 1, 2, -327687, 1, 2, -327682, 1, 2, -327681, 1, 2, -393216, 1, 2, -393215, 1, 2, -393213, 1, 2, -26, 131073, 1, -16, 65537, 0, -15, 65537, 0, -65551, 65537, 0, -27, 131073, 2, -19, 65537, 1, -65555, 65537, 1, -17, 65537, 1, -65553, 65537, 1, -131087, 196609, 1, -131086, 196609, 1, -131085, 196609, 1, -131088, 196609, 1, -131089, 196609, 1, -131091, 196609, 1, -131090, 196609, 1)
+
+[node name="Ground" type="StaticBody2D" parent="."]
+visible = false
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
+shape = SubResource("RectangleShape2D_mpmhc")
+
+[node name="Sprite2D" type="Sprite2D" parent="Ground"]
+texture = ExtResource("1_vb6gl")
+
+[node name="Aaa" type="Sprite2D" parent="."]
+position = Vector2(-1030, -31)
+scale = Vector2(0.15, 0.146245)
+texture = ExtResource("3_27c1b")
