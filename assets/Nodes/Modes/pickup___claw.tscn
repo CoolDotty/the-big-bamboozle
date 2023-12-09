@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://ctwoglq12mgby"]
+
+[ext_resource type="Script" path="res://Scripts/Pickups/Pickup_Claw.gd" id="1_idxnf"]
+[ext_resource type="Texture2D" uid="uid://brbmk8ynnhi7j" path="res://assets/TEMP - Claw Art.png" id="2_ua6lv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cohgj"]
+size = Vector2(34, 33)
+
+[node name="Pickup - Claw" type="Area2D"]
+script = ExtResource("1_idxnf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1.5)
+shape = SubResource("RectangleShape2D_cohgj")
+
+[node name="Temp-ClawArt" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_ua6lv")
+
+[connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]
