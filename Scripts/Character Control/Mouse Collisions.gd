@@ -81,3 +81,12 @@ func _process(delta):
 
 	if Input.is_action_just_pressed("input_scroll_up") and can_change_mode:
 		scroll_mode(1)
+	
+	for i in len(mode_array):
+		var mode = mode_array[i]
+		if not mode.has_method("disable_mode"): 
+			continue
+		if i == current_mode:
+			mode.call("enable_mode")
+		else:
+			mode.call("disable_mode")

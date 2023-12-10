@@ -13,14 +13,16 @@ var holding_build = false
 func disable_mode():
 	mode_active = false
 	self.visible = false
-	if active_ghost != null:
-		active_ghost.queue_free()
+	get_tree().call_group("active_ghosts", "queue_free")
 
 func enable_mode():
+	if mode_active:
+		return
 	mode_active = true
 	self.visible = true
 	active_ghost = GHOST_PLANK.instantiate()
 	owner.add_child(active_ghost)
+	active_ghost.add_to_group("active_ghosts")
 	active_ghost.global_position = get_global_mouse_position()
 
 func _process(delta):
