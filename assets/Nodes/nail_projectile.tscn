@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://dh8fe6njodoeb"]
+
+[ext_resource type="Script" path="res://Scripts/Nail_Projectile.gd" id="1_bv025"]
+[ext_resource type="Texture2D" uid="uid://bk42qfpeypnm0" path="res://assets/TEMP - Nail.png" id="2_k0hil"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o7qiw"]
+size = Vector2(34, 16)
+
+[node name="Nail Projectile" type="Area2D"]
+script = ExtResource("1_bv025")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_o7qiw")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = -1.5708
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_k0hil")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

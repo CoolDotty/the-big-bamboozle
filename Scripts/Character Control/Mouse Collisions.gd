@@ -8,6 +8,8 @@ var current_mode : int
 
 var hit_point := Vector2()
 
+var can_change_mode := true
+
 @export var claw_mode : Node
 @export var destroy_mode : Node
 @export var build_mode : Node
@@ -28,14 +30,25 @@ func _ready():
 
 func pickup_mode(new_mode):
 	unlocked_modes.append(MODES.GLOBAL_MODES.keys()[new_mode])
-	change_mode(new_mode)	
+	
+	current_mode = unlocked_modes.size() - 1
+			
+	for key in MODES.GLOBAL_MODES:
+		if key == unlocked_modes[current_mode]:
+			mode_array[MODES.GLOBAL_MODES[key]].enable_mode()
+		else:
+			if mode_array[MODES.GLOBAL_MODES[key]].has_method("disable_mode"):
+				mode_array[MODES.GLOBAL_MODES[key]].disable_mode()
 
 func change_mode(change):
 	current_mode = change
 
-	for mode in mode_array:
-		if mode.has_method("disable_mode"):
-			mode.disable_mode()
+	for key in MODES.GLOBAL_MODES:
+		if key == unlocked_modes[current_mode]:
+			mode_array[MODES.GLOBAL_MODES[key]].enable_mode()
+		else:
+			if mode_array[MODES.GLOBAL_MODES[key]].has_method("disable_mode"):
+				mode_array[MODES.GLOBAL_MODES[key]].disable_mode()
 
 	mode_array[current_mode].enable_mode()
 
@@ -44,13 +57,13 @@ func scroll_mode(input):
 		return
 
 	current_mode += input
-	print(current_mode,"  ",unlocked_modes.size())
+
 	if current_mode > unlocked_modes.size() - 1:
 		current_mode = 0
-	print(current_mode)
+
 	if current_mode < 0:
 		current_mode = unlocked_modes.size() - 1
-	print(current_mode)
+
 	change_mode(current_mode)
 
 func _process(delta):
@@ -63,8 +76,17 @@ func _process(delta):
 	else:
 		hit_point = Vector2()
 
-	if Input.is_action_just_pressed("input_scroll_down"):
+	if Input.is_action_just_pressed("input_scroll_down") and can_change_mode:
 		scroll_mode(-1)
 
-	if Input.is_action_just_pressed("input_scroll_up"):
+	if Input.is_action_just_pressed("input_scroll_up") and can_change_mode:
 		scroll_mode(1)
+	
+	for i in len(mode_array):
+		var mode = mode_array[i]
+		if not mode.has_method("disable_mode"): 
+			continue
+		if i == current_mode:
+			mode.call("enable_mode")
+		else:
+			mode.call("disable_mode")

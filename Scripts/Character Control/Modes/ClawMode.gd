@@ -84,18 +84,22 @@ func _process(delta):
 				throw_held_item()
 
 func shoot_claw(delta):
+	if not get_parent().is_colliding():
+		return
+	
 	if position.distance_to(get_parent().hit_point) >= min_firing_distance:
 		t = 0
 		current_state = Claw_State.FIRING
 		starting_claw_position = self.global_position
 		target_claw_position = to_global(get_parent().hit_point)
+		get_parent().can_change_mode = false
 		if get_parent().get_collider():
 			target_collider = get_parent().get_collider()
 
 func target_hit():
 	if target_collider.has_method("pickup"):
 		grab_item()
-	elif target_collider.has_method("grapple"):
+	elif target_collider.is_in_group("Grapple"):
 		teathering()
 	else:
 		cancel_claw()
@@ -118,6 +122,7 @@ func teathering():
 	grapple_target = player_controller.global_position - offset * 0.5
 
 func cancel_claw():
+	get_parent().can_change_mode = true
 	self.global_position = get_parent().global_position
 	current_state = Claw_State.DEFAULT	
 
@@ -127,7 +132,7 @@ func throw_held_item():
 	holding_item = false
 
 func release_grapple():
-	print("let go")
+	get_parent().can_change_mode = true
 	current_state = Claw_State.DEFAULT	
 
 func _draw():
@@ -137,7 +142,7 @@ func _draw():
 		if global_position.distance_to(get_parent().get_collision_point()) >= min_firing_distance:
 			if get_parent().get_collider().has_method("pickup"):
 				draw_circle(get_parent().hit_point, 10, Color(0, 255, 0))
-			elif get_parent().get_collider().has_method("grapple"):
+			elif get_parent().get_collider().is_in_group("Grapple"):
 				draw_circle(get_parent().hit_point, 10, Color(0, 0, 255))
 			else:
 				draw_circle(get_parent().hit_point, 10, Color(255, 255, 0))

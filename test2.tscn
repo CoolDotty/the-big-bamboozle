@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://7fqh02uy8jni"]
+
+[ext_resource type="PackedScene" uid="uid://8hapkwxov1pd" path="res://assets/Nodes/player.tscn" id="1_lgmdb"]
+[ext_resource type="PackedScene" uid="uid://dwt6ortf4ac6" path="res://assets/Nodes/Modes/pickup___nail.tscn" id="2_7deje"]
+[ext_resource type="PackedScene" uid="uid://o3lji42iybi" path="res://assets/Nodes/person.tscn" id="2_axxxx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6ls5v"]
+size = Vector2(629, 20)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Floor" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+position = Vector2(304.5, 0)
+shape = SubResource("RectangleShape2D_6ls5v")
+
+[node name="Ceiling" type="StaticBody2D" parent="." groups=["Grapple"]]
+position = Vector2(0, -185)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ceiling"]
+position = Vector2(304.5, 0)
+shape = SubResource("RectangleShape2D_6ls5v")
+
+[node name="Player" parent="." instance=ExtResource("1_lgmdb")]
+position = Vector2(41, -42)
+
+[node name="Person" parent="." instance=ExtResource("2_axxxx")]
+position = Vector2(364, -32)
+
+[node name="Pickup - Nail" parent="." instance=ExtResource("2_7deje")]
+position = Vector2(131, -44)

@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://cxo11hgiattxp"]
+
+[ext_resource type="Script" path="res://Scripts/Pickups/Pickup_Destroy.gd" id="1_23ew8"]
+[ext_resource type="Texture2D" uid="uid://hlxlinaehvw" path="res://assets/TEMP - destroy power art.png" id="2_vd63c"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cohgj"]
+size = Vector2(34, 33)
+
+[node name="Pickup - Destroy" type="Area2D"]
+script = ExtResource("1_23ew8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1.5)
+shape = SubResource("RectangleShape2D_cohgj")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_vd63c")
+
+[connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]
