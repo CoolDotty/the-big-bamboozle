@@ -2,16 +2,16 @@
 
 [ext_resource type="PackedScene" uid="uid://8hapkwxov1pd" path="res://assets/Nodes/player.tscn" id="1_i1qy7"]
 [ext_resource type="Texture2D" uid="uid://cxvm8hr3h0sy8" path="res://icon.svg" id="3_uokmn"]
-[ext_resource type="PackedScene" uid="uid://ctwoglq12mgby" path="res://assets/Nodes/Modes/pickup___claw.tscn" id="14_nh5lp"]
-[ext_resource type="PackedScene" uid="uid://cxo11hgiattxp" path="res://assets/Nodes/Modes/pickup___destroy.tscn" id="15_qdth6"]
-[ext_resource type="PackedScene" uid="uid://w1sm40nggnfv" path="res://assets/Nodes/Modes/pickup___build.tscn" id="16_mbj2w"]
-[ext_resource type="PackedScene" uid="uid://dwt6ortf4ac6" path="res://assets/Nodes/Modes/pickup___nail.tscn" id="17_1gfp8"]
+[ext_resource type="PackedScene" uid="uid://ctwoglq12mgby" path="res://assets/Nodes/Mode Pickups/pickup___claw.tscn" id="14_nh5lp"]
+[ext_resource type="PackedScene" uid="uid://cxo11hgiattxp" path="res://assets/Nodes/Mode Pickups/pickup___destroy.tscn" id="15_qdth6"]
+[ext_resource type="PackedScene" uid="uid://w1sm40nggnfv" path="res://assets/Nodes/Mode Pickups/pickup___build.tscn" id="16_mbj2w"]
+[ext_resource type="PackedScene" uid="uid://dwt6ortf4ac6" path="res://assets/Nodes/Mode Pickups/pickup___nail.tscn" id="17_1gfp8"]
 [ext_resource type="PackedScene" uid="uid://o3lji42iybi" path="res://assets/Nodes/person.tscn" id="18_n1171"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g0x8a"]
 size = Vector2(10000, 20)
 
-[node name="Test" type="Node2D"]
+[node name="Scene Root" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_i1qy7")]
 

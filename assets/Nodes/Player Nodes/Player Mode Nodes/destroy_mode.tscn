@@ -4,11 +4,11 @@
 [ext_resource type="Texture2D" uid="uid://ckus1v6olefbt" path="res://assets/TEMP - Boom_Slime_SP.webp" id="2_nv8xa"]
 
 [node name="Destroy Mode" type="Node2D"]
-visible = false
 top_level = true
 script = ExtResource("1_emuad")
 
-[node name="Destroy Art" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 10
 position = Vector2(-1.96701e-06, 45)
 scale = Vector2(0.05, 0.05)
 texture = ExtResource("2_nv8xa")

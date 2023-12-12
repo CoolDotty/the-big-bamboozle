@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://w1sm40nggnfv"]
 
 [ext_resource type="Script" path="res://Scripts/Pickups/Pickup_Build.gd" id="1_8uukf"]
-[ext_resource type="Texture2D" uid="uid://hlxlinaehvw" path="res://assets/TEMP - destroy power art.png" id="2_ymyxp"]
+[ext_resource type="Texture2D" uid="uid://lymkc8j5f8sm" path="res://assets/BuildMode.png" id="2_mf8k6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cohgj"]
 size = Vector2(34, 33)
@@ -14,7 +14,7 @@ position = Vector2(0, 1.5)
 shape = SubResource("RectangleShape2D_cohgj")
 
 [node name="Sprite" type="Sprite2D" parent="."]
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("2_ymyxp")
+position = Vector2(-2, 0)
+texture = ExtResource("2_mf8k6")
 
 [connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]
