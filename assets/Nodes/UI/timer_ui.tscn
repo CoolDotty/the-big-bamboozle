@@ -1,0 +1,38 @@
+[gd_scene load_steps=2 format=3 uid="uid://cblbqff8u4b5v"]
+
+[ext_resource type="Script" path="res://Scripts/level_timer.gd" id="1_fq23h"]
+
+[node name="Timer UI" type="Control" node_paths=PackedStringArray("timer", "label", "target_label")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fq23h")
+timer = NodePath("CanvasLayer/Timer")
+label = NodePath("CanvasLayer/Label")
+target_label = NodePath("CanvasLayer/People Label")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_left = 13.0
+offset_right = 395.0
+offset_bottom = 122.0
+theme_override_font_sizes/font_size = 80
+text = "02:00"
+
+[node name="Timer" type="Timer" parent="CanvasLayer"]
+one_shot = true
+
+[node name="People Label" type="Label" parent="CanvasLayer"]
+offset_left = 43.0
+offset_top = 99.0
+offset_right = 195.0
+offset_bottom = 129.0
+theme_override_font_sizes/font_size = 19
+text = "2 targets remain"
+
+[connection signal="timeout" from="CanvasLayer/Timer" to="." method="_on_timer_timeout"]

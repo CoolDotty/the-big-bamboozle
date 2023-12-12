@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://q6s1eqdh5wqt"]
+
+[ext_resource type="Script" path="res://Scripts/Character Control/Modes/BuildMode.gd" id="1_eqy2g"]
+[ext_resource type="Texture2D" uid="uid://fdwv3ya3dl00" path="res://assets/BuildModeArm.png" id="2_j4a6a"]
+
+[node name="Build Mode" type="Node2D"]
+script = ExtResource("1_eqy2g")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 10
+position = Vector2(0, 28)
+rotation = 1.5708
+texture = ExtResource("2_j4a6a")

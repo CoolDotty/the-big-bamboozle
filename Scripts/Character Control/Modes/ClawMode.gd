@@ -2,7 +2,7 @@ extends Area2D
 
 var mode_active = false
 
-@export var player_controller : Node
+var player_controller : Node
 
 @export var item_hold_position : Node
 
@@ -34,6 +34,9 @@ func disable_mode():
 func enable_mode():
 	mode_active = true
 	self.visible = true
+	#this ensures that if we switched modes somehow while shooting, 
+	#when we re-enable this mode the claw goes back to it's default state
+	cancel_claw() 
 
 func _process(delta):
 	if not mode_active:

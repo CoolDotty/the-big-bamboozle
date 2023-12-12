@@ -1,15 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://o3lji42iybi"]
+[gd_scene load_steps=4 format=3 uid="uid://o3lji42iybi"]
 
-[ext_resource type="Texture2D" uid="uid://242pjya7nl5g" path="res://assets/TEMP - Person.png" id="1_6aohu"]
+[ext_resource type="Script" path="res://Scripts/Person.gd" id="1_7v4sx"]
+[ext_resource type="Texture2D" uid="uid://5ykabtywfenp" path="res://assets/Worker.png" id="2_328ok"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8yfc4"]
 
 [node name="Person" type="StaticBody2D" groups=["Person"]]
+script = ExtResource("1_7v4sx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-scale = Vector2(2, 2)
+scale = Vector2(4, 4)
 shape = SubResource("CircleShape2D_8yfc4")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.09, 0.09)
-texture = ExtResource("1_6aohu")
+texture = ExtResource("2_328ok")

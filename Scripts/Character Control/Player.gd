@@ -11,10 +11,10 @@ var direction
 @export var gravity := 600.0
 
 @export var player_sprite : Sprite2D
+@export var mode_container : Node
 
 func get_move_input():
 	direction = Input.get_axis("input_move_left", "input_move_right")
-
 
 	if direction != 0.0:
 		velocity.x = lerp(velocity.x, direction * move_speed, acceleration)
@@ -26,8 +26,14 @@ func get_move_input():
 		pass
 	elif direction < 0:
 		player_sprite.set_flip_h(true)
+		#this ugly little loop is an easy way to flip the currently equiped sprite
+		for child in mode_container.get_children():
+			child.get_node("Sprite2D").set_flip_v(true)
 	else:
 		player_sprite.set_flip_h(false)
+		#this ugly little loop is an easy way to flip the currently equiped sprite
+		for child in mode_container.get_children():
+			child.get_node("Sprite2D").set_flip_v(false)
 
 func set_sprite_rotation():
 	if get_floor_normal().distance_to(Vector2.UP) > 0.05 :

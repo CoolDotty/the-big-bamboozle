@@ -1,0 +1,44 @@
+[gd_scene load_steps=8 format=3 uid="uid://7fqh02uy8jni"]
+
+[ext_resource type="PackedScene" uid="uid://8hapkwxov1pd" path="res://assets/Nodes/player.tscn" id="1_bei2v"]
+[ext_resource type="PackedScene" uid="uid://o3lji42iybi" path="res://assets/Nodes/person.tscn" id="2_mmgg6"]
+[ext_resource type="PackedScene" uid="uid://ctwoglq12mgby" path="res://assets/Nodes/Mode Pickups/pickup___claw.tscn" id="3_crm5p"]
+[ext_resource type="PackedScene" uid="uid://cxo11hgiattxp" path="res://assets/Nodes/Mode Pickups/pickup___destroy.tscn" id="4_6b7uy"]
+[ext_resource type="PackedScene" uid="uid://dwt6ortf4ac6" path="res://assets/Nodes/Mode Pickups/pickup___nail.tscn" id="5_7jcps"]
+[ext_resource type="PackedScene" uid="uid://w1sm40nggnfv" path="res://assets/Nodes/Mode Pickups/pickup___build.tscn" id="6_tkxx2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6ls5v"]
+size = Vector2(629, 20)
+
+[node name="Scene Root" type="Node2D"]
+
+[node name="Floor" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+position = Vector2(304.5, 0)
+shape = SubResource("RectangleShape2D_6ls5v")
+
+[node name="Ceiling" type="StaticBody2D" parent="." groups=["Grapple"]]
+position = Vector2(0, -185)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ceiling"]
+position = Vector2(297, -187)
+shape = SubResource("RectangleShape2D_6ls5v")
+
+[node name="Player" parent="." instance=ExtResource("1_bei2v")]
+position = Vector2(41, -42)
+
+[node name="Person" parent="." instance=ExtResource("2_mmgg6")]
+position = Vector2(541, -34)
+
+[node name="Pickup - Claw" parent="." instance=ExtResource("3_crm5p")]
+position = Vector2(182, -48)
+
+[node name="Pickup - Destroy" parent="." instance=ExtResource("4_6b7uy")]
+position = Vector2(125, -44)
+
+[node name="Pickup - Nail" parent="." instance=ExtResource("5_7jcps")]
+position = Vector2(261, -41)
+
+[node name="Pickup - Build" parent="." instance=ExtResource("6_tkxx2")]
+position = Vector2(338, -42)

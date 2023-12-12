@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://chiv3pr8hx27a"]
+
+[ext_resource type="Script" path="res://Scripts/Character Control/Modes/NailMode.gd" id="1_f7g4e"]
+[ext_resource type="Texture2D" uid="uid://b7atbvbq21yqp" path="res://assets/NailGunAttached.png" id="2_fxl0o"]
+
+[node name="Nail Mode" type="Node2D"]
+script = ExtResource("1_f7g4e")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 10
+position = Vector2(-3.6, 28)
+rotation = 1.5708
+texture = ExtResource("2_fxl0o")
+flip_h = true
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(0, 56)
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

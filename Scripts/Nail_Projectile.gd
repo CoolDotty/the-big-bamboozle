@@ -11,7 +11,7 @@ func _on_body_entered(body):
 	if body.is_in_group("Player") or body.is_in_group("PassThrough"):
 		pass
 	elif body.is_in_group("Person"):
-		print(body," kill this target")
+		body.die()
 		destroy_self()
 	else:
 		destroy_self()
