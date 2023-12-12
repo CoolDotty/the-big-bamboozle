@@ -14,7 +14,6 @@ func _ready():
 	corrected_horizontal = horizontal_offset
 
 func _process(delta):	
-	print(get_viewport().size.x)
 	#another fast dirty way of making something work
 	#check which side our horizontal offset should be on
 	if look_target.direction == 0.0:

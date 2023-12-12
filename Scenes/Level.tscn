@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://c1nrlqpol4geo"]
+[gd_scene load_steps=16 format=3 uid="uid://c1nrlqpol4geo"]
 
 [ext_resource type="Texture2D" uid="uid://fqa18fnxb1yg" path="res://assets/concrete (1).png" id="1_vb6gl"]
 [ext_resource type="Texture2D" uid="uid://b8i23enbvahs0" path="res://assets/Tileset.png" id="2_7qd53"]
@@ -7,7 +7,9 @@
 [ext_resource type="Texture2D" uid="uid://c1wowa153t2c4" path="res://assets/SmallBox.png" id="6_kj236"]
 [ext_resource type="PackedScene" uid="uid://8hapkwxov1pd" path="res://assets/Nodes/player.tscn" id="7_6tc5b"]
 [ext_resource type="PackedScene" uid="uid://o3lji42iybi" path="res://assets/Nodes/person.tscn" id="8_vx4v0"]
-[ext_resource type="PackedScene" uid="uid://ctwoglq12mgby" path="res://assets/Nodes/Mode Pickups/pickup___claw.tscn" id="8_ww1d2"]
+[ext_resource type="PackedScene" uid="uid://3i5y8flajhrf" path="res://assets/Nodes/game_manager.tscn" id="9_8rrdo"]
+[ext_resource type="PackedScene" uid="uid://w1sm40nggnfv" path="res://assets/Nodes/Mode Pickups/pickup___build.tscn" id="9_sxnbi"]
+[ext_resource type="PackedScene" uid="uid://dwt6ortf4ac6" path="res://assets/Nodes/Mode Pickups/pickup___nail.tscn" id="10_rount"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3y5o2"]
 texture = ExtResource("1_vb6gl")
@@ -46,6 +48,8 @@ size = Vector2(2894, 51)
 
 [node name="Scene Root" type="Node2D"]
 z_index = 1
+
+[node name="Game Manager" parent="." instance=ExtResource("9_8rrdo")]
 
 [node name="TileMap" type="TileMap" parent="."]
 z_index = 1
@@ -123,5 +127,8 @@ position = Vector2(1155, -273)
 [node name="Person4" parent="." instance=ExtResource("8_vx4v0")]
 position = Vector2(-622, -275)
 
-[node name="Pickup - Claw" parent="." instance=ExtResource("8_ww1d2")]
-position = Vector2(-1094, -29)
+[node name="Pickup - Build" parent="." instance=ExtResource("9_sxnbi")]
+position = Vector2(-1319, -37)
+
+[node name="Pickup - Nail" parent="." instance=ExtResource("10_rount")]
+position = Vector2(-1183, -39)
