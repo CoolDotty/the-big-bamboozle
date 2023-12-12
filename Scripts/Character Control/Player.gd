@@ -15,7 +15,6 @@ var direction
 func get_move_input():
 	direction = Input.get_axis("input_move_left", "input_move_right")
 
-
 	if direction != 0.0:
 		velocity.x = lerp(velocity.x, direction * move_speed, acceleration)
 	else:

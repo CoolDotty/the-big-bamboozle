@@ -1,7 +1,7 @@
 extends Node2D
 
-const GHOST_PLANK = preload("res://assets/Nodes/ghost_plank.tscn")
-const PLANK = preload("res://assets/Nodes/wooden_plank.tscn")
+const GHOST_PLANK = preload("res://assets/Nodes/Player Nodes/ghost_plank.tscn")
+const PLANK = preload("res://assets/Nodes/Player Nodes/wooden_plank.tscn")
 
 var current_held_plank
 var active_ghost
@@ -9,6 +9,11 @@ var active_ghost
 var mode_active = false
 
 var holding_build = false
+
+var scene_root
+
+func _ready():
+	scene_root = get_tree().get_root().get_node("Scene Root") 
 
 func disable_mode():
 	mode_active = false
@@ -21,7 +26,7 @@ func enable_mode():
 	mode_active = true
 	self.visible = true
 	active_ghost = GHOST_PLANK.instantiate()
-	owner.add_child(active_ghost)
+	scene_root.add_child(active_ghost)
 	active_ghost.add_to_group("active_ghosts")
 	active_ghost.global_position = get_global_mouse_position()
 
@@ -39,7 +44,7 @@ func _process(delta):
 	#if we are not overlapping and click, spawn the block
 	if Input.is_action_just_pressed("input_fire") and active_ghost.get_overlapping_bodies().size() == 0:
 		current_held_plank = PLANK.instantiate()
-		get_tree().get_root().add_child(current_held_plank)
+		scene_root.add_child(current_held_plank)
 		current_held_plank.global_position = active_ghost.global_position
 		current_held_plank.rotation_degrees =  active_ghost.rotation_degrees
 		

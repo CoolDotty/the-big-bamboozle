@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://crlo8e8w68h68"]
+
+[ext_resource type="Script" path="res://Scripts/Character Control/Modes/ClawMode.gd" id="1_lipsh"]
+[ext_resource type="Texture2D" uid="uid://brbmk8ynnhi7j" path="res://assets/TEMP - Claw Art.png" id="2_5wykd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_erxl4"]
+size = Vector2(13, 44.25)
+
+[node name="Claw Mode" type="Area2D" node_paths=PackedStringArray("player_controller")]
+visible = false
+top_level = true
+input_pickable = false
+script = ExtResource("1_lipsh")
+player_controller = NodePath("")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.500001, -2.125)
+shape = SubResource("RectangleShape2D_erxl4")
+
+[node name="Item Position" type="Node2D" parent="."]
+position = Vector2(-60, 216)
+
+[node name="Claw Art" type="Sprite2D" parent="."]
+position = Vector2(0, 28)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("2_5wykd")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

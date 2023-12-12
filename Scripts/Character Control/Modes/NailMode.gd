@@ -2,12 +2,17 @@ extends Node2D
 
 var mode_active = false
 
-const NAIL = preload("res://assets/Nodes/nail_projectile.tscn")
+const NAIL = preload("res://assets/Nodes/Player Nodes/nail_projectile.tscn")
 
 @export var projectile_speed := 600.0
 @export var fire_rate := 0.4
 
 var can_shoot = true
+
+var scene_root
+
+func _ready():
+	scene_root = get_tree().get_root().get_node("Scene Root") 
 
 func disable_mode():
 	mode_active = false
@@ -33,7 +38,7 @@ func _process(delta):
 
 		var n = NAIL.instantiate()
 		n.projectile_speed = projectile_speed
-		owner.add_child(n)
+		scene_root.add_child(n)
 		n.global_transform = $Marker2D.global_transform
 		n.look_at(get_global_mouse_position())
 		can_shoot = false
