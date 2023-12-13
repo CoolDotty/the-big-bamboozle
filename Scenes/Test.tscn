@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://cofp2mvh0ygjy"]
+[gd_scene load_steps=10 format=3 uid="uid://cofp2mvh0ygjy"]
 
 [ext_resource type="PackedScene" uid="uid://8hapkwxov1pd" path="res://assets/Nodes/player.tscn" id="1_i1qy7"]
 [ext_resource type="Texture2D" uid="uid://cxvm8hr3h0sy8" path="res://icon.svg" id="3_uokmn"]
+[ext_resource type="PackedScene" uid="uid://dygwyx36dbkdt" path="res://Scenes/LevelUI.tscn" id="8_cekqn"]
 [ext_resource type="PackedScene" uid="uid://ctwoglq12mgby" path="res://assets/Nodes/Mode Pickups/pickup___claw.tscn" id="14_nh5lp"]
 [ext_resource type="PackedScene" uid="uid://cxo11hgiattxp" path="res://assets/Nodes/Mode Pickups/pickup___destroy.tscn" id="15_qdth6"]
 [ext_resource type="PackedScene" uid="uid://w1sm40nggnfv" path="res://assets/Nodes/Mode Pickups/pickup___build.tscn" id="16_mbj2w"]
@@ -13,11 +14,13 @@ size = Vector2(10000, 20)
 
 [node name="Scene Root" type="Node2D"]
 
+[node name="LevelUI" parent="." instance=ExtResource("8_cekqn")]
+
 [node name="Player" parent="." instance=ExtResource("1_i1qy7")]
 
 [node name="Environment" type="Node" parent="."]
 
-[node name="Floor" type="StaticBody2D" parent="Environment"]
+[node name="Floor" type="StaticBody2D" parent="Environment" groups=["Grapple"]]
 position = Vector2(-1, 214)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/Floor"]
@@ -29,7 +32,7 @@ position = Vector2(358, 55.0001)
 scale = Vector2(33.6719, 1)
 texture = ExtResource("3_uokmn")
 
-[node name="Ramp" type="StaticBody2D" parent="Environment"]
+[node name="Ramp" type="StaticBody2D" parent="Environment" groups=["Grapple"]]
 position = Vector2(573, -66.9999)
 rotation = -0.523599
 scale = Vector2(0.0800006, 1)
@@ -43,7 +46,7 @@ position = Vector2(-361.09, 56.5883)
 scale = Vector2(85.4788, 1)
 texture = ExtResource("3_uokmn")
 
-[node name="Ramp3" type="StaticBody2D" parent="Environment"]
+[node name="Ramp3" type="StaticBody2D" parent="Environment" groups=["Grapple"]]
 position = Vector2(-253, 143)
 rotation = 0.261799
 scale = Vector2(0.0800006, 1)
@@ -57,7 +60,7 @@ position = Vector2(-361.09, 56.5883)
 scale = Vector2(85.4788, 1)
 texture = ExtResource("3_uokmn")
 
-[node name="Ramp2" type="StaticBody2D" parent="Environment"]
+[node name="Ramp2" type="StaticBody2D" parent="Environment" groups=["Grapple"]]
 position = Vector2(1121, 55.9999)
 rotation = 0.785398
 scale = Vector2(0.0800006, 1)
@@ -86,3 +89,9 @@ position = Vector2(-489, 10)
 [node name="Game Manager" type="Node2D" parent="."]
 
 [node name="Person" parent="Game Manager" instance=ExtResource("18_n1171")]
+
+[node name="Person2" parent="Game Manager" instance=ExtResource("18_n1171")]
+position = Vector2(517, -126)
+
+[node name="Person3" parent="Game Manager" instance=ExtResource("18_n1171")]
+position = Vector2(817, -297)
