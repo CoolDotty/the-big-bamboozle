@@ -1,0 +1,116 @@
+[gd_scene load_steps=15 format=3 uid="uid://bay2rcy5lwf52"]
+
+[ext_resource type="Texture2D" uid="uid://b8i23enbvahs0" path="res://assets/Tileset.png" id="1_cgejl"]
+[ext_resource type="PackedScene" path="res://Scenes/LevelUI.tscn" id="2_nmb0u"]
+[ext_resource type="PackedScene" uid="uid://8hapkwxov1pd" path="res://assets/Nodes/player.tscn" id="3_7y7cf"]
+[ext_resource type="PackedScene" path="res://assets/Nodes/game_manager.tscn" id="4_omkw6"]
+[ext_resource type="PackedScene" uid="uid://o3lji42iybi" path="res://assets/Nodes/person.tscn" id="5_2abha"]
+[ext_resource type="PackedScene" uid="uid://w1sm40nggnfv" path="res://assets/Nodes/Mode Pickups/pickup___build.tscn" id="6_o0i0r"]
+[ext_resource type="PackedScene" uid="uid://ctwoglq12mgby" path="res://assets/Nodes/Mode Pickups/pickup___claw.tscn" id="7_hyneh"]
+[ext_resource type="PackedScene" uid="uid://cxo11hgiattxp" path="res://assets/Nodes/Mode Pickups/pickup___destroy.tscn" id="8_ufxsq"]
+[ext_resource type="PackedScene" uid="uid://dwt6ortf4ac6" path="res://assets/Nodes/Mode Pickups/pickup___nail.tscn" id="9_k4g5p"]
+[ext_resource type="Texture2D" uid="uid://dcshu3ijj7bkg" path="res://Background.png" id="10_ojrsv"]
+[ext_resource type="Texture2D" uid="uid://caa8dlbhbep65" path="res://assets/SteelWalkway.png" id="11_uhqkx"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7ayvh"]
+texture = ExtResource("1_cgejl")
+texture_region_size = Vector2i(50, 50)
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-25, -25, 25, -25, 25, 25, -25, 25)
+1:0/0 = 0
+1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:0/0/physics_layer_0/angular_velocity = 0.0
+2:0/0 = 0
+2:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:0/0/physics_layer_0/angular_velocity = 0.0
+0:1/0 = 0
+0:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:1/0/physics_layer_0/angular_velocity = 0.0
+1:1/0 = 0
+1:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:1/0/physics_layer_0/angular_velocity = 0.0
+2:1/0 = 0
+2:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:1/0/physics_layer_0/angular_velocity = 0.0
+0:2/0 = 0
+0:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:2/0/physics_layer_0/angular_velocity = 0.0
+1:2/0 = 0
+1:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:2/0/physics_layer_0/angular_velocity = 0.0
+2:2/0 = 0
+2:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:2/0/physics_layer_0/angular_velocity = 0.0
+0:3/0 = 0
+0:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:3/0/physics_layer_0/angular_velocity = 0.0
+1:3/0 = 0
+1:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:3/0/physics_layer_0/angular_velocity = 0.0
+2:3/0 = 0
+2:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:3/0/physics_layer_0/angular_velocity = 0.0
+
+[sub_resource type="TileSet" id="TileSet_lcdee"]
+tile_size = Vector2i(50, 50)
+physics_layer_0/collision_layer = 3
+physics_layer_0/collision_mask = 3
+sources/0 = SubResource("TileSetAtlasSource_7ayvh")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qbp4r"]
+
+[node name="Scene Root" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="." groups=["Grapple"]]
+tile_set = SubResource("TileSet_lcdee")
+cell_quadrant_size = 50
+format = 2
+layer_0/tile_data = PackedInt32Array(0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 6, 0, 0, 7, 0, 0, 8, 0, 0, 9, 0, 0, 10, 0, 0, 11, 0, 0, 12, 0, 0, 13, 0, 0, 14, 0, 0, 15, 0, 0, 16, 0, 0, 17, 0, 0, 18, 0, 0, 19, 0, 0, 20, 0, 0, 21, 0, 0, 65535, 0, 0, 65534, 0, 0, 65533, 0, 0, 65532, 0, 0, 65531, 0, 0, 65530, 0, 0, 65529, 0, 0, 65528, 0, 0, 65527, 0, 0, 65519, 0, 0, 65518, 0, 0, 65517, 0, 0, 65516, 0, 0, 65515, 0, 0, 65520, 0, 0, 65521, 0, 0, 65522, 0, 0, 65523, 0, 0, 65524, 0, 0, 65525, 0, 0, 65526, 0, 0, 65514, 0, 0, 65513, 0, 0, 65512, 0, 0, 65511, 0, 0, 65510, 0, 0, 65509, 0, 0, 65508, 0, 0, 65507, 0, 0, 65506, 0, 0, 22, 0, 0, 23, 0, 0, 24, 0, 0, 25, 0, 0, 26, 0, 0, 27, 0, 0, 28, 0, 0)
+
+[node name="LevelUI" parent="." instance=ExtResource("2_nmb0u")]
+
+[node name="Player" parent="." instance=ExtResource("3_7y7cf")]
+position = Vector2(-126, -35)
+
+[node name="Game Manager" parent="." instance=ExtResource("4_omkw6")]
+
+[node name="Person" parent="." instance=ExtResource("5_2abha")]
+position = Vector2(213, -41)
+
+[node name="Pickup - Build" parent="." instance=ExtResource("6_o0i0r")]
+position = Vector2(-252, -36)
+
+[node name="Pickup - Claw" parent="." instance=ExtResource("7_hyneh")]
+position = Vector2(-52, -35)
+
+[node name="Pickup - Destroy" parent="." instance=ExtResource("8_ufxsq")]
+position = Vector2(-343, -41)
+
+[node name="Pickup - Nail" parent="." instance=ExtResource("9_k4g5p")]
+position = Vector2(112, -31)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+z_index = -1
+z_as_relative = false
+offset_left = -1448.0
+offset_top = -947.0
+offset_right = 2505.0
+offset_bottom = 4.0
+texture = ExtResource("10_ojrsv")
+stretch_mode = 1
+metadata/_edit_lock_ = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(0, -272)
+scale = Vector2(20.48, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_qbp4r")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D/CollisionShape2D"]
+texture_repeat = 2
+texture = ExtResource("11_uhqkx")
+region_enabled = true
+region_rect = Rect2(0, 8.70124, 50.1039, 25.4045)
