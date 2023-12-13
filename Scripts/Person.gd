@@ -1,9 +1,7 @@
 extends StaticBody2D
 
-var game_manager
-
-func register_manager(manager):
-	game_manager = manager
+func _ready():
+	self.add_to_group("Person")
 
 func die():
-	game_manager.person_killed(self)
+	GameManager.person_killed.emit(self)
