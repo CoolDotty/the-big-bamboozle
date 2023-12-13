@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://304t417khjmf"
-path="res://.godot/imported/SteelWalkway.png-cb006ca0988f1ad7ad5456d944740f56.ctex"
+uid="uid://caa8dlbhbep65"
+path="res://.godot/imported/SteelWalkway.png-25bb97d983dfff8f2d51e567e43a3491.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://SteelWalkway.png"
-dest_files=["res://.godot/imported/SteelWalkway.png-cb006ca0988f1ad7ad5456d944740f56.ctex"]
+source_file="res://assets/SteelWalkway.png"
+dest_files=["res://.godot/imported/SteelWalkway.png-25bb97d983dfff8f2d51e567e43a3491.ctex"]
 
 [params]
 
