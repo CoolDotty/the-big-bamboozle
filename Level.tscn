@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://c1nrlqpol4geo"]
+[gd_scene load_steps=23 format=3 uid="uid://c1nrlqpol4geo"]
 
 [ext_resource type="Texture2D" uid="uid://fqa18fnxb1yg" path="res://assets/concrete (1).png" id="1_vb6gl"]
 [ext_resource type="Texture2D" uid="uid://b8i23enbvahs0" path="res://assets/Tileset.png" id="2_7qd53"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://v24d5dnjgbdd" path="res://assets/CeilingLight.png" id="10_qqgw5"]
 [ext_resource type="PackedScene" uid="uid://cxo11hgiattxp" path="res://assets/Nodes/Mode Pickups/pickup___destroy.tscn" id="10_qsqd4"]
 [ext_resource type="PackedScene" uid="uid://8hapkwxov1pd" path="res://assets/Nodes/player.tscn" id="12_2g1ik"]
+[ext_resource type="PackedScene" path="res://Scenes/LevelUI.tscn" id="14_p1022"]
 [ext_resource type="PackedScene" path="res://assets/Nodes/game_manager.tscn" id="14_texf0"]
 [ext_resource type="PackedScene" uid="uid://o3lji42iybi" path="res://assets/Nodes/person.tscn" id="15_fiq1m"]
 
@@ -216,7 +217,7 @@ texture = ExtResource("4_edb3m")
 stretch_mode = 1
 metadata/_edit_lock_ = true
 
-[node name="Player2" parent="." instance=ExtResource("12_2g1ik")]
+[node name="Player" parent="." instance=ExtResource("12_2g1ik")]
 position = Vector2(-1392, -39)
 scale = Vector2(1.66667, 1.49333)
 
@@ -336,3 +337,5 @@ position = Vector2(1366.8, -2.00894)
 
 [node name="Person7" parent="Game Manager" instance=ExtResource("15_fiq1m")]
 position = Vector2(1657.8, 164.063)
+
+[node name="LevelUI" parent="." instance=ExtResource("14_p1022")]
