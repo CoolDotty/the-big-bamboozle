@@ -2,9 +2,12 @@ extends Node
 
 
 @export var time_limit: float = 50 
+@export var timer_panic: float = 5
 
 @onready var RemainingLabel = $Control/RemainingLabel
 @onready var TimerLabel = $Control/TimerLabel
+
+@onready var timer_init_position = TimerLabel.position
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -25,6 +28,13 @@ func _process(_delta):
 		RemainingLabel.position = Vector2(randi_range(0, 4), randi_range(0, 4))
 	else:
 		RemainingLabel.position = Vector2.ZERO
+	
+	var remaining = $LevelTimer.time_left
+	if remaining < timer_panic and remaining > 0:
+		var panic_delta = pow(timer_panic - remaining, 2)
+		TimerLabel.position = timer_init_position + Vector2(randi_range(-panic_delta, panic_delta), randi_range(0, panic_delta * 2))
+	else:
+		TimerLabel.position = timer_init_position
 
 func on_player_killed(person):
 	var people_array = get_tree().get_nodes_in_group("Person")
