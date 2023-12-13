@@ -102,7 +102,7 @@ func shoot_claw(delta):
 func target_hit():
 	if target_collider.has_method("pickup"):
 		grab_item()
-	elif target_collider.is_in_group("Grapple"):
+	elif not target_collider.is_in_group("Person"):
 		teathering()
 	else:
 		cancel_claw()
@@ -144,13 +144,13 @@ func _draw():
 	if get_parent().is_colliding() and current_state != Claw_State.FIRING:
 		if global_position.distance_to(get_parent().get_collision_point()) >= min_firing_distance:
 			if get_parent().get_collider().has_method("pickup"):
-				draw_circle(get_parent().hit_point, 10, Color(0, 255, 0))
-			elif get_parent().get_collider().is_in_group("Grapple"):
-				draw_circle(get_parent().hit_point, 10, Color(0, 0, 255))
+				draw_circle(get_parent().hit_point, 10, Color.GREEN)
+			elif not get_parent().get_collider().is_in_group("Person"):
+				draw_circle(get_parent().hit_point, 10, Color.BLUE)
 			else:
-				draw_circle(get_parent().hit_point, 10, Color(255, 255, 0))
+				draw_circle(get_parent().hit_point, 10, Color.RED)
 		else:
-			draw_circle(get_parent().hit_point, 10, Color(255, 0, 0))
+			draw_circle(get_parent().hit_point, 10, Color.RED)
 		return
 
 	#ugly way of just removing the drawn vector if no previous conditions are met
