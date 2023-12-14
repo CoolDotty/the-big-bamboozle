@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://cxo11hgiattxp"]
 
 [ext_resource type="Script" path="res://Scripts/Pickups/Pickup_Destroy.gd" id="1_23ew8"]
-[ext_resource type="Texture2D" uid="uid://hlxlinaehvw" path="res://assets/TEMP - destroy power art.png" id="2_vd63c"]
+[ext_resource type="Texture2D" uid="uid://djpcch5y0u2p6" path="res://assets/DestroyMode.png" id="2_oarp3"]
 [ext_resource type="AudioStream" uid="uid://c0abegce0gq84" path="res://assets/audio/SFX/Get Item/Get Destroy.wav" id="3_rxgva"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cohgj"]
@@ -15,8 +15,10 @@ position = Vector2(0, 1.5)
 shape = SubResource("RectangleShape2D_cohgj")
 
 [node name="Sprite" type="Sprite2D" parent="."]
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("2_vd63c")
+position = Vector2(6, 0)
+texture = ExtResource("2_oarp3")
+region_enabled = true
+region_rect = Rect2(0.270859, -0.133842, 52.2955, 50.1334)
 
 [node name="Pickup" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_rxgva")

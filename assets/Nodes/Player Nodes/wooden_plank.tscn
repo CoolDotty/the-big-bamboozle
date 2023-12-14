@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://ba867gsst4kws"]
 
 [ext_resource type="Script" path="res://Scripts/wooden_plank.gd" id="1_6ivpc"]
-[ext_resource type="Texture2D" uid="uid://cxvm8hr3h0sy8" path="res://icon.svg" id="1_45t11"]
+[ext_resource type="Texture2D" uid="uid://bfakyerkcyf1h" path="res://assets/WoodPole.png" id="2_a0b4y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r0x27"]
 size = Vector2(20, 191)
@@ -16,7 +16,10 @@ position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_r0x27")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.15, 1.48)
-texture = ExtResource("1_45t11")
+position = Vector2(0.5, 1.5)
+scale = Vector2(1.35714, 3.81633)
+texture = ExtResource("2_a0b4y")
+region_enabled = true
+region_rect = Rect2(17.973, -0.539234, 14.0536, 49.9983)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dqwei1vgy8ffm"]
 
 [ext_resource type="Script" path="res://Scripts/Character Control/Modes/DestroyMode.gd" id="1_emuad"]
-[ext_resource type="Texture2D" uid="uid://ckus1v6olefbt" path="res://assets/TEMP - Boom_Slime_SP.webp" id="2_nv8xa"]
+[ext_resource type="Texture2D" uid="uid://djpcch5y0u2p6" path="res://assets/DestroyMode.png" id="2_eh0du"]
 
 [node name="Destroy Mode" type="Node2D"]
 top_level = true
@@ -10,5 +10,7 @@ script = ExtResource("1_emuad")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = 10
 position = Vector2(-1.96701e-06, 45)
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("2_nv8xa")
+rotation = 1.5708
+texture = ExtResource("2_eh0du")
+region_enabled = true
+region_rect = Rect2(0, 0, 49.9989, 50.2698)
