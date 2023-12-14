@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://c8t25tko88u1d"
+path="res://.godot/imported/Wall Placement.wav-2fbaf1c0e6c9c30f29c75cae3ae52132.sample"
+
+[deps]
+
+source_file="res://assets/audio/SFX/Movement/Wall Placement.wav"
+dest_files=["res://.godot/imported/Wall Placement.wav-2fbaf1c0e6c9c30f29c75cae3ae52132.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

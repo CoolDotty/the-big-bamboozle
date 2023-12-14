@@ -1,9 +1,24 @@
-[gd_scene load_steps=4 format=3 uid="uid://o3lji42iybi"]
+[gd_scene load_steps=9 format=3 uid="uid://o3lji42iybi"]
 
 [ext_resource type="Script" path="res://Scripts/Person.gd" id="1_7v4sx"]
 [ext_resource type="Texture2D" uid="uid://5ykabtywfenp" path="res://assets/Worker.png" id="2_328ok"]
+[ext_resource type="AudioStream" uid="uid://cl8pdhsp5i3t5" path="res://assets/audio/SFX/Worker Deaths/Death 1.wav" id="3_oom1g"]
+[ext_resource type="AudioStream" uid="uid://c8ed70c4wx87y" path="res://assets/audio/SFX/Worker Deaths/Death 2.wav" id="4_jco0u"]
+[ext_resource type="AudioStream" uid="uid://b4st5k4vitdtd" path="res://assets/audio/SFX/Worker Deaths/Death 3.wav" id="5_b6m1i"]
+[ext_resource type="AudioStream" uid="uid://li3076mgbqxr" path="res://assets/audio/SFX/Worker Deaths/Death 4.wav" id="6_0gdhu"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8yfc4"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_rj124"]
+streams_count = 4
+stream_0/stream = ExtResource("3_oom1g")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("4_jco0u")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("5_b6m1i")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("6_0gdhu")
+stream_3/weight = 1.0
 
 [node name="Person" type="StaticBody2D" groups=["Person"]]
 script = ExtResource("1_7v4sx")
@@ -14,3 +29,6 @@ shape = SubResource("CircleShape2D_8yfc4")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_328ok")
+
+[node name="Death" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_rj124")

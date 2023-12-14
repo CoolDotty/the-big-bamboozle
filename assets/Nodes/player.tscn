@@ -1,12 +1,33 @@
-[gd_scene load_steps=6 format=3 uid="uid://8hapkwxov1pd"]
+[gd_scene load_steps=15 format=3 uid="uid://8hapkwxov1pd"]
 
 [ext_resource type="Script" path="res://Scripts/Character Control/Player.gd" id="1_ilyk7"]
 [ext_resource type="Script" path="res://Scripts/Character Control/Camera.gd" id="2_wi6dn"]
 [ext_resource type="Texture2D" uid="uid://cvjc4jrutbv1k" path="res://assets/Player.png" id="3_641su"]
 [ext_resource type="Script" path="res://Scripts/Character Control/Mouse Collisions.gd" id="4_ap2x5"]
+[ext_resource type="AudioStream" uid="uid://d24vxat02ky" path="res://assets/audio/SFX/weapswitch.ogg" id="5_62r5c"]
+[ext_resource type="AudioStream" uid="uid://c2m73suyvk5ki" path="res://assets/audio/SFX/Movement/Engine.wav" id="6_372mi"]
+[ext_resource type="AudioStream" uid="uid://c4wd7rwgtll1f" path="res://assets/audio/SFX/Movement/Jump.wav" id="7_o2cyn"]
+[ext_resource type="AudioStream" uid="uid://cbllygjqs7fem" path="res://assets/audio/SFX/Movement/Brakes.wav" id="8_lhak1"]
+[ext_resource type="AudioStream" uid="uid://qwasvaanpcjn" path="res://assets/audio/SFX/Landing Crashes/Crash 1.wav" id="9_wd2af"]
+[ext_resource type="AudioStream" uid="uid://cmykd7ra1c7n1" path="res://assets/audio/SFX/Landing Crashes/Crash 2.wav" id="10_napsd"]
+[ext_resource type="AudioStream" uid="uid://b87nh488tcfnt" path="res://assets/audio/SFX/Landing Crashes/Crash 3.wav" id="11_xkleq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0tx6s"]
 radius = 25.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_xqw0q"]
+streams_count = 1
+stream_0/stream = ExtResource("5_62r5c")
+stream_0/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_gr31b"]
+streams_count = 3
+stream_0/stream = ExtResource("9_wd2af")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("10_napsd")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("11_xkleq")
+stream_2/weight = 1.0
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("player_sprite", "mode_container") groups=["Player"]]
 floor_max_angle = 0.523599
@@ -27,6 +48,23 @@ shape = SubResource("CircleShape2D_0tx6s")
 [node name="Sprite" type="Sprite2D" parent="."]
 texture = ExtResource("3_641su")
 
+[node name="SwitchMode" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_xqw0q")
+
 [node name="Mode Container" type="RayCast2D" parent="."]
 target_position = Vector2(0, 1000)
 script = ExtResource("4_ap2x5")
+
+[node name="Idle" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_372mi")
+volume_db = -6.0
+autoplay = true
+
+[node name="Jump" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_o2cyn")
+
+[node name="Brakes" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_lhak1")
+
+[node name="Landing" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_gr31b")

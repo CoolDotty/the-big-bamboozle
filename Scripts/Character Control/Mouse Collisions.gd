@@ -39,6 +39,7 @@ func scroll_mode(input):
 	if get_child_count() < 2:
 		return
 
+	$"../SwitchMode".play()
 	current_mode += input
 
 	if current_mode > get_child_count() - 1:

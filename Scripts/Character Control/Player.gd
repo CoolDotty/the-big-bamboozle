@@ -13,6 +13,12 @@ var direction
 @export var player_sprite : Sprite2D
 @export var mode_container : Node
 
+func _ready():
+	$Idle.finished.connect(
+		func():
+			$Idle.play()
+	)
+
 func get_move_input():
 	direction = Input.get_axis("input_move_left", "input_move_right")
 
@@ -46,12 +52,17 @@ func _physics_process(delta):
 	get_move_input()
 
 	if Input.is_action_just_pressed("input_jump") and is_on_floor():
+		$Jump.play()
 		velocity.y = -jump_height
 
 	velocity.y += gravity * delta  # Apply gravity
 	
 	# Move the player
+	var was_on_foor = is_on_floor()
 	move_and_slide()
+	var now_on_floor = is_on_floor()
+	if not was_on_foor and now_on_floor:
+		$Landing.play()
 	#rotate sprite to match floor and move direction
 	set_sprite_rotation()
 
@@ -59,4 +70,3 @@ func _on_Floor_hit(velocity):
 	if velocity.y > 0:
 		velocity.y = 0
 		
-
