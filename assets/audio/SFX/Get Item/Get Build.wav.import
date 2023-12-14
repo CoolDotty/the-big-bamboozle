@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://corngsfgmmstp"
+path="res://.godot/imported/Get Build.wav-bffef141041a5cd80a612da65a0a45da.sample"
+
+[deps]
+
+source_file="res://assets/audio/SFX/Get Item/Get Build.wav"
+dest_files=["res://.godot/imported/Get Build.wav-bffef141041a5cd80a612da65a0a45da.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

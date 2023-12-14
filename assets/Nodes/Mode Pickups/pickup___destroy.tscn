@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://cxo11hgiattxp"]
+[gd_scene load_steps=5 format=3 uid="uid://cxo11hgiattxp"]
 
 [ext_resource type="Script" path="res://Scripts/Pickups/Pickup_Destroy.gd" id="1_23ew8"]
 [ext_resource type="Texture2D" uid="uid://hlxlinaehvw" path="res://assets/TEMP - destroy power art.png" id="2_vd63c"]
+[ext_resource type="AudioStream" uid="uid://c0abegce0gq84" path="res://assets/audio/SFX/Get Item/Get Destroy.wav" id="3_rxgva"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cohgj"]
 size = Vector2(34, 33)
@@ -16,5 +17,8 @@ shape = SubResource("RectangleShape2D_cohgj")
 [node name="Sprite" type="Sprite2D" parent="."]
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("2_vd63c")
+
+[node name="Pickup" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_rxgva")
 
 [connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]

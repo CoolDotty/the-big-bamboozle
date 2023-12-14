@@ -34,8 +34,10 @@ func _process(delta):
 	if Input.is_action_pressed("input_fire") and can_shoot:
 		if get_parent().get_collider():
 			if get_parent().get_collider().is_in_group("Person"):
+				if not $NoShoot.playing:
+					$NoShoot.play()
 				return
-
+		
 		var n = NAIL.instantiate()
 		n.projectile_speed = projectile_speed
 		scene_root.add_child(n)
@@ -43,6 +45,7 @@ func _process(delta):
 		n.look_at(get_global_mouse_position())
 		can_shoot = false
 		$Timer.start(fire_rate)
+		$Shoot.play()
 
 	queue_redraw()
 

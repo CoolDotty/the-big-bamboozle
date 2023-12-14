@@ -1,7 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://chiv3pr8hx27a"]
+[gd_scene load_steps=8 format=3 uid="uid://chiv3pr8hx27a"]
 
 [ext_resource type="Script" path="res://Scripts/Character Control/Modes/NailMode.gd" id="1_f7g4e"]
 [ext_resource type="Texture2D" uid="uid://b7atbvbq21yqp" path="res://assets/NailGunAttached.png" id="2_fxl0o"]
+[ext_resource type="AudioStream" uid="uid://wlcwit4nq0k5" path="res://assets/audio/SFX/minigun.ogg" id="3_efvd3"]
+[ext_resource type="AudioStream" uid="uid://jmc0ovllfsjw" path="res://assets/audio/SFX/minigun2.ogg" id="4_cofdu"]
+[ext_resource type="AudioStream" uid="uid://b2bglc1ec34ff" path="res://assets/audio/SFX/minigun3.ogg" id="5_tjieu"]
+[ext_resource type="AudioStream" uid="uid://b85yndeljt5ys" path="res://assets/audio/SFX/outofammo.wav" id="6_8v2sk"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_a2430"]
+streams_count = 3
+stream_0/stream = ExtResource("3_efvd3")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("4_cofdu")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("5_tjieu")
+stream_2/weight = 1.0
 
 [node name="Nail Mode" type="Node2D"]
 script = ExtResource("1_f7g4e")
@@ -17,5 +30,11 @@ flip_h = true
 position = Vector2(0, 56)
 
 [node name="Timer" type="Timer" parent="."]
+
+[node name="Shoot" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_a2430")
+
+[node name="NoShoot" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_8v2sk")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

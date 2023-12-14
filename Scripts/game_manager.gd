@@ -12,7 +12,6 @@ func _ready():
 
 func on_person_killed(person):
 	person.remove_from_group("Person")
-	person.queue_free()
 
 func victory():
 	print("we win this level")

@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://ctwoglq12mgby"]
+[gd_scene load_steps=5 format=3 uid="uid://ctwoglq12mgby"]
 
 [ext_resource type="Script" path="res://Scripts/Pickups/Pickup_Claw.gd" id="1_idxnf"]
 [ext_resource type="Texture2D" uid="uid://jfimpwyeibqr" path="res://assets/GrappleArm.png" id="2_yx1wi"]
+[ext_resource type="AudioStream" uid="uid://c2gg0p1mei0k0" path="res://assets/audio/SFX/Get Item/Get Claw.wav" id="3_orwn5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cohgj"]
 size = Vector2(34, 33)
@@ -13,9 +14,12 @@ script = ExtResource("1_idxnf")
 position = Vector2(0, 1.5)
 shape = SubResource("RectangleShape2D_cohgj")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite" type="Sprite2D" parent="."]
 position = Vector2(1.5, 0)
 rotation = 1.5708
 texture = ExtResource("2_yx1wi")
+
+[node name="Pickup" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_orwn5")
 
 [connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]
