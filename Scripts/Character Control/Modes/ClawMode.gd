@@ -38,13 +38,12 @@ func enable_mode():
 	#when we re-enable this mode the claw goes back to it's default state
 	cancel_claw() 
 
-func _process(delta):
+func _physics_process(delta):
 	if not mode_active:
 		return 
 
 	if holding_item:
 		held_item.position = to_global(item_hold_position.position)
-		print(self.global_rotation_degrees)
 
 	if current_state == Claw_State.FIRING:
 		# Calculate the time factor based on constant speed
@@ -65,7 +64,9 @@ func _process(delta):
 		t = clamp(t, 0.0, 1.0)
 
 		# Perform the lerping
-		player_controller.global_position = starting_grapple_position.lerp(grapple_target, t)
+		var global_pos_delta = player_controller.global_position - starting_grapple_position.lerp(grapple_target, t)
+		
+		player_controller.velocity -= global_pos_delta
 		if player_controller.global_position.distance_to(grapple_target) <= 75:
 			hit_grapple_point()
 	elif current_state == Claw_State.GRAPPLED:
@@ -85,6 +86,9 @@ func _process(delta):
 				release_grapple()
 			Claw_State.HOLDING:
 				throw_held_item()
+	elif Input.is_action_just_pressed("input_jump"):
+		if current_state == Claw_State.FIRING or current_state == Claw_State.TETHERING:
+			cancel_claw()
 
 func shoot_claw(delta):
 	if not get_parent().is_colliding():
@@ -116,6 +120,7 @@ func grab_item():
 func hit_grapple_point():
 	current_state = Claw_State.GRAPPLED	
 	grapple_hold_position = player_controller.global_position
+	player_controller.velocity = Vector2.ZERO
 
 func teathering():
 	t = 0
