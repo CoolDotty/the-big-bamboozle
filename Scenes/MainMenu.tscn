@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://b260tdp5th61"]
+[gd_scene load_steps=9 format=3 uid="uid://b260tdp5th61"]
 
 [ext_resource type="Texture2D" uid="uid://bh5yv8bdsblgd" path="res://assets/PlayButton.png" id="1_q6ps8"]
 [ext_resource type="Texture2D" uid="uid://52vuyfth7dpp" path="res://assets/PlayButtonPressed.png" id="2_3ejpv"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://crmcj6gqs6idl" path="res://assets/QuitButtonPressed.png" id="3_n1jei"]
 [ext_resource type="Texture2D" uid="uid://136ld8hppniq" path="res://assets/QuitButtonHover.png" id="4_dies5"]
 [ext_resource type="Texture2D" uid="uid://dtwlrloe7qckg" path="res://assets/TheWreckoning.png" id="7_ujv1k"]
+[ext_resource type="Texture2D" uid="uid://ctcs6elj5w8u4" path="res://assets/Title.png" id="8_33i21"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -15,15 +16,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="Label" type="Label" parent="."]
-layout_mode = 0
-offset_left = 86.0
-offset_top = 50.0
-offset_right = 211.0
-offset_bottom = 76.0
-text = "The Wreckoning"
-horizontal_alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
@@ -51,3 +43,10 @@ offset_bottom = 263.0
 texture_normal = ExtResource("1_q6ps8")
 texture_pressed = ExtResource("2_3ejpv")
 texture_hover = ExtResource("3_k2t47")
+
+[node name="Title" type="Sprite2D" parent="."]
+position = Vector2(148, 62)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("8_33i21")
+region_enabled = true
+region_rect = Rect2(0, 25.9799, 269.628, 90.3753)
