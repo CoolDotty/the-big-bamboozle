@@ -2,8 +2,8 @@ extends CharacterBody2D
 
 #movement variables
 @export_range(100, 1000, 1) var move_speed := 600.0
-@export_range (0, 1.0) var friction := 0.25
-@export_range (0, 1.0) var acceleration := 0.25
+@export_range (0, 100) var friction := 10
+@export_range (0, 100) var acceleration := 25
 var direction
 
 #jump variables
@@ -23,9 +23,9 @@ func get_move_input():
 	direction = Input.get_axis("input_move_left", "input_move_right")
 
 	if direction != 0.0:
-		velocity.x = lerp(velocity.x, direction * move_speed, acceleration)
+		velocity.x = move_toward(velocity.x, direction * move_speed, acceleration)
 	else:
-		velocity.x = lerp(velocity.x, 0.0, friction)
+		velocity.x = move_toward(velocity.x, 0.0, friction)
 
 	#this shouldn't be here, but we are limited on time...
 	if direction == 0.0:
