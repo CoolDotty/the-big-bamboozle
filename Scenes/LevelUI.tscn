@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://dygwyx36dbkdt"]
+[gd_scene load_steps=2 format=3 uid="uid://bbf2t5ykhi47s"]
 
 [ext_resource type="Script" path="res://Scenes/LevelUI.gd" id="1_yoj18"]
 
@@ -18,16 +18,19 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -22.5
-offset_right = 22.5
-offset_bottom = 26.0
+offset_left = 214.0
+offset_top = 5.0
+offset_right = 438.0
+offset_bottom = 118.0
 grow_horizontal = 2
+theme_override_font_sizes/font_size = 80
 text = "Timer"
 
 [node name="RemainingLabel" type="Label" parent="Control"]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+offset_right = 509.0
+offset_bottom = 138.0
+theme_override_font_sizes/font_size = 80
 text = "Remaining"
 
 [node name="LevelTimer" type="Timer" parent="."]
