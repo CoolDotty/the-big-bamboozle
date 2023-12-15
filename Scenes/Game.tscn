@@ -1,9 +1,8 @@
-[gd_scene load_steps=18 format=3 uid="uid://bay2rcy5lwf52"]
+[gd_scene load_steps=17 format=3 uid="uid://bay2rcy5lwf52"]
 
 [ext_resource type="Texture2D" uid="uid://b8i23enbvahs0" path="res://assets/Tileset.png" id="1_cgejl"]
 [ext_resource type="PackedScene" uid="uid://bbf2t5ykhi47s" path="res://Scenes/LevelUI.tscn" id="2_nmb0u"]
 [ext_resource type="PackedScene" uid="uid://8hapkwxov1pd" path="res://assets/Nodes/player.tscn" id="3_7y7cf"]
-[ext_resource type="PackedScene" path="res://assets/Nodes/game_manager.tscn" id="4_omkw6"]
 [ext_resource type="PackedScene" uid="uid://o3lji42iybi" path="res://assets/Nodes/person.tscn" id="5_2abha"]
 [ext_resource type="PackedScene" uid="uid://w1sm40nggnfv" path="res://assets/Nodes/Mode Pickups/pickup___build.tscn" id="6_o0i0r"]
 [ext_resource type="PackedScene" uid="uid://ctwoglq12mgby" path="res://assets/Nodes/Mode Pickups/pickup___claw.tscn" id="7_hyneh"]
@@ -99,27 +98,25 @@ position = Vector2(-1179, -26)
 move_speed = 500.0
 jump_height = 250.0
 
-[node name="Game Manager" parent="." instance=ExtResource("4_omkw6")]
-
-[node name="Person" parent="Game Manager" instance=ExtResource("5_2abha")]
+[node name="Person" parent="." instance=ExtResource("5_2abha")]
 position = Vector2(213, -25)
 
-[node name="Person2" parent="Game Manager" instance=ExtResource("5_2abha")]
+[node name="Person2" parent="." instance=ExtResource("5_2abha")]
 position = Vector2(366, -175)
 
-[node name="Person3" parent="Game Manager" instance=ExtResource("5_2abha")]
+[node name="Person3" parent="." instance=ExtResource("5_2abha")]
 position = Vector2(887, -480)
 
-[node name="Person4" parent="Game Manager" instance=ExtResource("5_2abha")]
+[node name="Person4" parent="." instance=ExtResource("5_2abha")]
 position = Vector2(-1302, -238)
 
-[node name="Person5" parent="Game Manager" instance=ExtResource("5_2abha")]
+[node name="Person5" parent="." instance=ExtResource("5_2abha")]
 position = Vector2(-1307, -374)
 
-[node name="Person6" parent="Game Manager" instance=ExtResource("5_2abha")]
+[node name="Person6" parent="." instance=ExtResource("5_2abha")]
 position = Vector2(428, -25)
 
-[node name="Person7" parent="Game Manager" instance=ExtResource("5_2abha")]
+[node name="Person7" parent="." instance=ExtResource("5_2abha")]
 position = Vector2(2392, -676)
 
 [node name="Pickup - Build" parent="." instance=ExtResource("6_o0i0r")]
