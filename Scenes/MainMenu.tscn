@@ -1,13 +1,15 @@
-[gd_scene load_steps=9 format=3 uid="uid://b260tdp5th61"]
+[gd_scene load_steps=11 format=3 uid="uid://b260tdp5th61"]
 
+[ext_resource type="Texture2D" uid="uid://c25xdq3bcf3jm" path="res://assets/The WreckoningV2.png" id="1_dkqg6"]
 [ext_resource type="Texture2D" uid="uid://bh5yv8bdsblgd" path="res://assets/PlayButton.png" id="1_q6ps8"]
 [ext_resource type="Texture2D" uid="uid://52vuyfth7dpp" path="res://assets/PlayButtonPressed.png" id="2_3ejpv"]
 [ext_resource type="Texture2D" uid="uid://dycixtdh5ppgi" path="res://assets/QuitButton.png" id="2_7kvqa"]
 [ext_resource type="Texture2D" uid="uid://doy1hhqndjhd0" path="res://assets/PlayButtonHover.png" id="3_k2t47"]
 [ext_resource type="Texture2D" uid="uid://crmcj6gqs6idl" path="res://assets/QuitButtonPressed.png" id="3_n1jei"]
 [ext_resource type="Texture2D" uid="uid://136ld8hppniq" path="res://assets/QuitButtonHover.png" id="4_dies5"]
-[ext_resource type="Texture2D" uid="uid://dtwlrloe7qckg" path="res://assets/TheWreckoning.png" id="7_ujv1k"]
+[ext_resource type="Texture2D" uid="uid://ofve5tbuhfiu" path="res://assets/ButtonBorder.png" id="5_c78hb"]
 [ext_resource type="Texture2D" uid="uid://ctcs6elj5w8u4" path="res://assets/Title.png" id="8_33i21"]
+[ext_resource type="Texture2D" uid="uid://b50n1smmssokh" path="res://assets/Poster.png" id="9_8t3hj"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -19,34 +21,57 @@ grow_vertical = 2
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
-offset_right = 199.0
-offset_bottom = 166.0
-texture = ExtResource("7_ujv1k")
-metadata/_edit_lock_ = true
+offset_left = -83.0
+offset_top = 27.0
+offset_right = 417.0
+offset_bottom = 527.0
+texture = ExtResource("1_dkqg6")
 
 [node name="TextureButton2" type="TextureButton" parent="TextureRect"]
 layout_mode = 0
-offset_left = 179.0
-offset_top = 212.0
-offset_right = 229.0
-offset_bottom = 262.0
+offset_left = 359.0
+offset_top = 390.0
+offset_right = 409.0
+offset_bottom = 440.0
+scale = Vector2(1.64, 1.48)
 texture_normal = ExtResource("2_7kvqa")
 texture_pressed = ExtResource("3_n1jei")
 texture_hover = ExtResource("4_dies5")
 
+[node name="ButtonBorder" type="Sprite2D" parent="TextureRect/TextureButton2"]
+show_behind_parent = true
+position = Vector2(26, 25)
+texture = ExtResource("5_c78hb")
+
 [node name="TextureButton" type="TextureButton" parent="TextureRect"]
 layout_mode = 0
-offset_left = 70.0
-offset_top = 213.0
-offset_right = 120.0
-offset_bottom = 263.0
+offset_left = 155.0
+offset_top = 391.0
+offset_right = 205.0
+offset_bottom = 441.0
+scale = Vector2(1.65914, 1.48)
 texture_normal = ExtResource("1_q6ps8")
 texture_pressed = ExtResource("2_3ejpv")
 texture_hover = ExtResource("3_k2t47")
 
+[node name="ButtonBorder" type="Sprite2D" parent="TextureRect/TextureButton"]
+show_behind_parent = true
+position = Vector2(26, 25)
+texture = ExtResource("5_c78hb")
+
 [node name="Title" type="Sprite2D" parent="."]
-position = Vector2(148, 62)
-scale = Vector2(0.7, 0.7)
+position = Vector2(213, 79)
+scale = Vector2(1.35929, 1.40705)
 texture = ExtResource("8_33i21")
 region_enabled = true
 region_rect = Rect2(0, 25.9799, 269.628, 90.3753)
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+show_behind_parent = true
+layout_mode = 0
+offset_right = 300.0
+offset_bottom = 401.0
+scale = Vector2(1.43556, 1.58663)
+texture = ExtResource("9_8t3hj")
+expand_mode = 1
+stretch_mode = 3
