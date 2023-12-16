@@ -39,6 +39,7 @@ func enable_mode():
 	cancel_claw() 
 
 func _physics_process(delta):
+	print(current_state)
 	if not mode_active:
 		return 
 

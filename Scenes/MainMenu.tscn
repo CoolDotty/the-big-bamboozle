@@ -1,80 +1,164 @@
-[gd_scene load_steps=11 format=3 uid="uid://b260tdp5th61"]
+[gd_scene load_steps=20 format=3 uid="uid://b260tdp5th61"]
 
+[ext_resource type="Script" path="res://Scenes/MainMenu.gd" id="1_3ea1i"]
 [ext_resource type="Texture2D" uid="uid://c25xdq3bcf3jm" path="res://assets/The WreckoningV2.png" id="1_dkqg6"]
 [ext_resource type="Texture2D" uid="uid://bh5yv8bdsblgd" path="res://assets/PlayButton.png" id="1_q6ps8"]
 [ext_resource type="Texture2D" uid="uid://52vuyfth7dpp" path="res://assets/PlayButtonPressed.png" id="2_3ejpv"]
 [ext_resource type="Texture2D" uid="uid://dycixtdh5ppgi" path="res://assets/QuitButton.png" id="2_7kvqa"]
+[ext_resource type="Texture2D" uid="uid://c8ts6ifl2pb78" path="res://assets/brickz.png" id="2_qpyl2"]
+[ext_resource type="Texture2D" uid="uid://bsdo01yotbka3" path="res://assets/splat.png" id="3_fgreb"]
 [ext_resource type="Texture2D" uid="uid://doy1hhqndjhd0" path="res://assets/PlayButtonHover.png" id="3_k2t47"]
 [ext_resource type="Texture2D" uid="uid://crmcj6gqs6idl" path="res://assets/QuitButtonPressed.png" id="3_n1jei"]
 [ext_resource type="Texture2D" uid="uid://136ld8hppniq" path="res://assets/QuitButtonHover.png" id="4_dies5"]
 [ext_resource type="Texture2D" uid="uid://ofve5tbuhfiu" path="res://assets/ButtonBorder.png" id="5_c78hb"]
 [ext_resource type="Texture2D" uid="uid://ctcs6elj5w8u4" path="res://assets/Title.png" id="8_33i21"]
 [ext_resource type="Texture2D" uid="uid://b50n1smmssokh" path="res://assets/Poster.png" id="9_8t3hj"]
+[ext_resource type="AudioStream" uid="uid://d1ddxmdg1pkvs" path="res://assets/audio/Main Menu 1.wav" id="14_68iux"]
+[ext_resource type="AudioStream" uid="uid://cl8pdhsp5i3t5" path="res://assets/audio/SFX/Worker Deaths/Death 1.wav" id="15_jtyrq"]
+[ext_resource type="AudioStream" uid="uid://c8ed70c4wx87y" path="res://assets/audio/SFX/Worker Deaths/Death 2.wav" id="16_rvoo3"]
+[ext_resource type="AudioStream" uid="uid://b4st5k4vitdtd" path="res://assets/audio/SFX/Worker Deaths/Death 3.wav" id="17_s45ub"]
+[ext_resource type="AudioStream" uid="uid://li3076mgbqxr" path="res://assets/audio/SFX/Worker Deaths/Death 4.wav" id="18_d6ggk"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ivh6b"]
+streams_count = 4
+stream_0/stream = ExtResource("15_jtyrq")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("16_rvoo3")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("17_s45ub")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("18_d6ggk")
+stream_3/weight = 1.0
 
 [node name="Control" type="Control"]
 layout_mode = 3
-anchors_preset = 9
+anchors_preset = 15
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 800.0
-offset_right = 800.0
+grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(3, 3)
 size_flags_horizontal = 4
 size_flags_vertical = 4
+script = ExtResource("1_3ea1i")
+
+[node name="Brickz" type="TextureRect" parent="."]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_qpyl2")
+
+[node name="Splat" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 813.0
+offset_top = 217.0
+offset_right = 1313.0
+offset_bottom = 483.0
+scale = Vector2(-1.5, 1)
+texture = ExtResource("3_fgreb")
 
 [node name="TextureRect" type="TextureRect" parent="."]
-layout_mode = 0
-offset_left = -83.0
-offset_top = 27.0
-offset_right = 417.0
-offset_bottom = 527.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -250.0
+offset_right = 250.0
+offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("1_dkqg6")
 
-[node name="TextureButton2" type="TextureButton" parent="TextureRect"]
+[node name="PlayButton" type="TextureButton" parent="TextureRect"]
 layout_mode = 0
-offset_left = 359.0
-offset_top = 390.0
-offset_right = 409.0
-offset_bottom = 440.0
-scale = Vector2(1.64, 1.48)
-texture_normal = ExtResource("2_7kvqa")
-texture_pressed = ExtResource("3_n1jei")
-texture_hover = ExtResource("4_dies5")
-
-[node name="ButtonBorder" type="Sprite2D" parent="TextureRect/TextureButton2"]
-show_behind_parent = true
-position = Vector2(26, 25)
-texture = ExtResource("5_c78hb")
-
-[node name="TextureButton" type="TextureButton" parent="TextureRect"]
-layout_mode = 0
-offset_left = 155.0
-offset_top = 391.0
-offset_right = 205.0
-offset_bottom = 441.0
+offset_left = 102.0
+offset_top = 429.0
+offset_right = 152.0
+offset_bottom = 479.0
 scale = Vector2(1.65914, 1.48)
 texture_normal = ExtResource("1_q6ps8")
 texture_pressed = ExtResource("2_3ejpv")
 texture_hover = ExtResource("3_k2t47")
 
-[node name="ButtonBorder" type="Sprite2D" parent="TextureRect/TextureButton"]
+[node name="ButtonBorder" type="Sprite2D" parent="TextureRect/PlayButton"]
 show_behind_parent = true
 position = Vector2(26, 25)
 texture = ExtResource("5_c78hb")
 
-[node name="Title" type="Sprite2D" parent="."]
-position = Vector2(213, 79)
-scale = Vector2(1.35929, 1.40705)
-texture = ExtResource("8_33i21")
-region_enabled = true
-region_rect = Rect2(0, 25.9799, 269.628, 90.3753)
+[node name="QuitButton" type="TextureButton" parent="TextureRect"]
+layout_mode = 0
+offset_left = 306.0
+offset_top = 428.0
+offset_right = 356.0
+offset_bottom = 478.0
+scale = Vector2(1.64, 1.48)
+texture_normal = ExtResource("2_7kvqa")
+texture_pressed = ExtResource("3_n1jei")
+texture_hover = ExtResource("4_dies5")
+
+[node name="ButtonBorder" type="Sprite2D" parent="TextureRect/QuitButton"]
+show_behind_parent = true
+position = Vector2(26, 25)
+texture = ExtResource("5_c78hb")
 
 [node name="TextureRect2" type="TextureRect" parent="."]
 show_behind_parent = true
-layout_mode = 0
-offset_right = 300.0
-offset_bottom = 401.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
 scale = Vector2(1.43556, 1.58663)
 texture = ExtResource("9_8t3hj")
 expand_mode = 1
 stretch_mode = 3
+
+[node name="Title" type="Sprite2D" parent="TextureRect2"]
+position = Vector2(2.78635, -142.44)
+scale = Vector2(0.946871, 0.886817)
+texture = ExtResource("8_33i21")
+region_enabled = true
+region_rect = Rect2(0, 25.9799, 269.628, 90.3753)
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_68iux")
+volume_db = -12.0
+autoplay = true
+
+[node name="Credits" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -350.0
+offset_top = -175.0
+grow_horizontal = 0
+grow_vertical = 0
+bbcode_enabled = true
+text = "[i]By some great people include:[/i]
+[right]
+[b]Echo57[/b] - The Digital Design Dynamo
+[b]DayV[/b] - The Algorithm Artisan
+[b]Centor[/b] - The Sonic Sorcerer
+[b]KarlTheCool[/b] - The Knowledge Navigator
+[b]BeccaRex[/b] - The Creative Catalyst
+[/right]"
+text_direction = 1
+
+[node name="Death" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_ivh6b")
+max_polyphony = 999
+
+[connection signal="pressed" from="TextureRect/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="TextureRect/QuitButton" to="." method="_on_quit_button_pressed"]

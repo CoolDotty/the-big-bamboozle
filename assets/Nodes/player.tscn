@@ -39,7 +39,6 @@ mode_container = NodePath("Mode Container")
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("look_target")]
 top_level = true
 position = Vector2(324, -1202)
-zoom = Vector2(2, 2)
 script = ExtResource("2_wi6dn")
 look_target = NodePath("..")
 vertical_offset = -200

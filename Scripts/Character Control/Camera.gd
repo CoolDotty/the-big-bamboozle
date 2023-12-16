@@ -13,9 +13,12 @@ var corrected_horizontal
 func _ready():
 	corrected_horizontal = horizontal_offset
 
-func _process(delta):	
+func _physics_process(delta):	
 	#another fast dirty way of making something work
 	#check which side our horizontal offset should be on
+	print(look_target)
+	if not is_instance_valid(look_target):
+		return
 	if look_target.direction == 0.0:
 		pass
 	elif look_target.direction < 0:

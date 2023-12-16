@@ -57,8 +57,8 @@ func on_timeout():
 
 func victory():
 	$LevelTimer.set_paused(true)
-	RemainingLabel.text = "we win this level"
+	RemainingLabel.text = "We won the wreckening"
 
 
 func defeat():
-	RemainingLabel.text = "we lost this level"
+	RemainingLabel.text = "The wreckening has failed"

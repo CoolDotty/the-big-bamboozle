@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bay2rcy5lwf52"]
+[gd_scene load_steps=17 format=3 uid="uid://bay2rcy5lwf52"]
 
 [ext_resource type="Texture2D" uid="uid://b8i23enbvahs0" path="res://assets/Tileset.png" id="1_cgejl"]
 [ext_resource type="PackedScene" uid="uid://bbf2t5ykhi47s" path="res://Scenes/LevelUI.tscn" id="2_nmb0u"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://dwt6ortf4ac6" path="res://assets/Nodes/Mode Pickups/pickup___nail.tscn" id="9_k4g5p"]
 [ext_resource type="Texture2D" uid="uid://dcshu3ijj7bkg" path="res://Background.png" id="10_ojrsv"]
 [ext_resource type="Texture2D" uid="uid://v24d5dnjgbdd" path="res://assets/CeilingLight.png" id="11_mlolg"]
+[ext_resource type="AudioStream" uid="uid://djnnlwp7cwdgy" path="res://assets/audio/Level 1 Full.wav" id="12_3o0xo"]
 [ext_resource type="Texture2D" uid="uid://bfakyerkcyf1h" path="res://assets/WoodPole.png" id="12_w156k"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7ayvh"]
@@ -127,7 +128,7 @@ position = Vector2(1717, -26)
 position = Vector2(-816, -324)
 
 [node name="Pickup - Claw" parent="." instance=ExtResource("7_hyneh")]
-position = Vector2(-947, -28)
+position = Vector2(-891, -28)
 
 [node name="Pickup - Destroy" parent="." instance=ExtResource("8_ufxsq")]
 position = Vector2(-753, -324)
@@ -263,3 +264,7 @@ scale = Vector2(1, 2.04)
 texture = ExtResource("12_w156k")
 region_enabled = true
 region_rect = Rect2(17.9962, -0.785366, 14.5941, 49.9983)
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_3o0xo")
+autoplay = true

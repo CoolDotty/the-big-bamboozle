@@ -18,19 +18,19 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = 214.0
-offset_top = 5.0
-offset_right = 438.0
-offset_bottom = 118.0
+offset_left = 97.0
+offset_top = 4.0
+offset_right = 321.0
+offset_bottom = 117.0
 grow_horizontal = 2
-theme_override_font_sizes/font_size = 80
+theme_override_font_sizes/font_size = 40
 text = "Timer"
 
 [node name="RemainingLabel" type="Label" parent="Control"]
 layout_mode = 0
 offset_right = 509.0
 offset_bottom = 138.0
-theme_override_font_sizes/font_size = 80
+theme_override_font_sizes/font_size = 40
 text = "Remaining"
 
 [node name="LevelTimer" type="Timer" parent="."]
